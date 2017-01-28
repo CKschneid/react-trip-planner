@@ -38,8 +38,10 @@ const fetchStationDirectory = () => {
               return (
                 axios.get('./rail_data/stops.json')
                         .then( res => {
-                          localforage.setItem('stationDirectory', res.data )
-                            }).then( resData => {
+                          return (
+                            localforage.setItem('stationDirectory', res.data )
+                          )
+                          }).then( resData => {
                                 dispatch(receiveStationDirectory(resData))
                             })
               )
